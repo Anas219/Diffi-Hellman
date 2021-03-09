@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Diffi-Hellmann</title>
+	
+	<script>
+		
+		function fHellmann() {
+			
+			var vA;
+			var vB;
+			var vKa;
+			var vKb;
+			var vg;
+			var vp;
+			var va;
+			var vb;
+			var vAusgabe="";
+			
+			
+			vg = parseFloat(document.getElementById("idg").value)
+			vp = parseFloat(document.getElementById("idp").value)
+			va = parseFloat(document.getElementById("ida").value)
+			vb = parseFloat(document.getElementById("idb").value)
+			
+			vA = Math.pow(vg, va) % vp;
+			vB = Math.pow(vg, vb) % vp;
+			vKa = Math.pow(vB, va) % vp;
+			vKb = Math.pow(vA, vb) % vp;
+			
+			
+			vAusgabe = vAusgabe + "Öffentlicher Schlüssel:" + vA + "<br>" 
+			vAusgabe = vAusgabe + "Öffentlicher Schlüssel:" + vB + "<br>"
+			vAusgabe = vAusgabe + "-------------------------" + "<br>"
+			vAusgabe = vAusgabe + "Generierter Schlüssel:" + vKa + "<br>"
+			vAusgabe = vAusgabe + "Generierter Schlüssel:" + vKb + "<br>"
+			vAusgabe = vAusgabe;
+			
+			
+			document.getElementById("idAusgabe").innerHTML = vAusgabe;
+			
+			
+			
+			
+			
+			
+		}
+	
+	
+	</script>
+</head>
+
+<body>
+	<p>Berechnung von Schlüssel K nach Diffi-Hellmann</p>
+	
+	1.Alice und Bob einigen sich auf<br>
+	g = <input id="idg" type="" value="2"><br>
+	p = <input id="idp" type="" value="13"><p></p>
+	
+	----------------------------------------<p></p>
+	
+	2.Alice wählt die Geheime Zahl a:<br>
+	a = <input id="ida" type="" value="5"><br>
+	3-Bob wählt die Geheime Zahl b:<br>
+	b = <input id="idb" type="" value="8"><p></p>
+	
+	<button onClick="fHellmann()"> Berechne Schlüssel K! </button>
+	
+	<div id= "idAusgabe">
+	</div>
+	
+</body>
+</html>
